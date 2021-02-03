@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Congratulations</title>
+<!-- <link rel="stylesheet" href="{% static 'questions/css/congo.css' %}"> -->
+{% endblock %}
+
+{% block content %}
+<div class="flex-center full">
+	<div class="container text-center ">
+		<h1 class="font-weight-bold mb-5 text-maroon">
+			Congratulations!! 🥳
+		</h1>
+		{% if has_completed_all %}
+		<h6>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo suscipit corporis
+			repudiandae, facere excepturi commodi odio similique quaerat eveniet deleniti ipsum!
+			Fuga adipisci iusto illo similique, laboriosam enim quia reiciendis.
+			<br>
+			<br>
+			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem sed quas laboriosam
+			nihil odio culpa, quia temporibus doloribus nemo mollitia. Laudantium nihil eius neque
+			vero tempore rerum officia atque maiores!
+			<br>
+			<br>
+			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis at quae consectetur
+			maxime, assumenda est consequatur quo nisi non repellat obcaecati? Vitae error sint
+			minus temporibus aliquam repellendus, veniam maiores.
+		</h6>
+		{% else %}
+		<h6>You have completed the round!! Activate the next round 
+			<a href="{% url 'rounds' %}"><u class="text-maroon">here</u></a>
+		</h6>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

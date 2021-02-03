@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Challenges</title>
+<link rel="stylesheet" href="{% static 'questions/css/rounds.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="challenge-body">
+	<div class="container-fluid full">
+		<div class="row m-0 p-0">
+			{% for challenge in rounds %}
+			<div class="col-xl-4 col-md-6 col-sm-12 my-5 mx-0 p-0 flex-center">
+				{% if challenge.number < request.user.current_round  %}
+				<div class="border-left border-success rounded mx-0 py-5 px-3 challenge-box">
+				{% elif challenge.number == request.user.current_round  %}
+				<div class="border-left border-warning rounded mx-0 py-5 px-3 challenge-box">
+				{% else  %}
+				<div class="border-left border-danger rounded mx-0 py-5 px-3 challenge-box">
+				{% endif %}
+					<table class="p-2">
+						<tr class="flex-center text-center">
+							<td class="mx-3 challenge-box-heading text-maroon ">
+								<h3>
+									Round
+									<br>
+									<span class="display-4">{{ challenge.number }}</span>
+								</h3>
+							</td>
+							<td class="mx-2">
+								{% if challenge.number == request.user.current_round  %}
+									<a href="{% url 'questions' %}">
+										<button class="btn button-1">Continue</button>
+									</a>
+								{% elif challenge.number == request.user.current_round|add:"1"  %}
+									{% if request.user.current_que == max_questions|add:"1" %}
+										<form action="{% url 'rounds' %}" method="post">
+											<input type="hidden" name="round" value="{{ challenge.number }}">
+											<button class="btn button-1">Activate</button>
+										</form>
+									{% else %}
+										<button class="btn button-1 disabled">Activate</button>
+									{% endif %}
+								{% elif challenge.number < request.user.current_round %}
+									<button class="btn button-1 disabled">Completed</button>
+								{% elif challenge.number > request.user.current_round %}
+									<button class="btn button-1 disabled">Activate</button>
+								{% endif %}
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	</div>
+</section>
+{% endblock %}

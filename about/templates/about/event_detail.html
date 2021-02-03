@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+	<title>{{ event.title }}</title>
+	<link rel="stylesheet" href="{% static 'about/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="about-body">
+	<div class="container">
+		<div class="row mx-0">
+			<div class="col-md-8 mx-0 card my-5 mx-auto about-card">
+				<div class="card-body mx-0 ">
+					<h1>{{ object.title }}</h1>
+					<p class=" date">{{ object.start_date }} - {{ object.end_date }}</p>
+					<p class="card-text text-dark">{{ object.description | safe }}</p>
+					<div class="container mx-auto d-flex justify-content media-box">
+						{% if object.image|length %}
+						<img src="{{ object.image.url }}">
+						{% endif %}
+						{% if object.video|length %}
+							<video controls>
+								<source src="{{ object.video.url }}">
+							</video>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

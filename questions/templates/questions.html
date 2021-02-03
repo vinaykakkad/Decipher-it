@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'questions/css/questions.css'%}">
+<title>Questions</title>
+{% endblock %}
+
+
+{% block content %}
+<section id="question-body" class="p-2 full">
+	<div class="container shadow-lg mx-auto my-5 p-0 question-box">
+		<div class="box-heading d-flex justify-content-center py-3 mb-3">
+			Question
+		</div>
+		{% if question.Question_Text %}
+		<div class='container-fluid my-5 px-4 question-class'>
+			{{question.Question_Text|safe}}
+		</div>
+		{%endif%}
+		<div class="container-fluid  mt-5 p-3">
+			<form action="{% url 'questions'%}"
+				class="m-0 form-inline flex-center"
+				method="POST">
+				{% csrf_token %}
+				<input type="text" name='answer' autocomplete="off" required
+					class="form-control field m-2" placeholder="Answer">
+				<button type="submit" class="btn m-2 button-1">Submit</button>
+			</form>
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,47 @@
+/* #b80b22 */
+/* #f5dd04 */
+
+#about-body {
+	font-size: 18px;
+	min-height: 90vh;
+}
+
+.heading {
+	margin-top: 30px;
+	border: 2px solid white;
+	color: white;
+	background-color: #b80b22;
+	width: 320px;
+	text-align: center;
+	font-size: 36px;
+}
+
+.about-card {
+	background-color: white;
+	box-shadow: 0 16px 48px #870617;
+	color: #b80b22;
+}
+
+.date {
+	color: #b80b22a1;
+}
+
+.about-button {
+	background-color: #b80b22;
+	color: white;
+	border: 2px solid #b80b22;
+}
+
+.about-button:hover {
+	color: #b80b22;
+	background-color: white;
+}
+
+.media-box {
+	width: 90%;
+}
+
+.about-main {
+	background-color: #b80b22;
+}
+

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Past Events</title>
+<link rel="stylesheet" href="{% static 'about/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="about-body">
+	<div class="mx-auto my-5 d-flex justify-content-center shadow heading">
+		Events
+	</div>
+	<div class="container">
+		<div class="row">
+			<!-- Blog Entries Column -->
+			<div class="col-md-8 mx-auto mt-3">
+				{% for event in event_list %}
+				<div class="card mb-4 about-card">
+					<div class="card-body">
+						<h2 class="card-title">{{ event.title }}</h2>
+						<p class="card-text h6 date">{{ event.start_date}} - {{ event.end_date }} </p>
+						<p class="card-text text-dark">{{event.description|slice:":200" }}</p>
+						<a href="{% url 'event_detail' event.slug  %}"
+						class="btn about-button">Read More &rarr;</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+{%endblock%}
